@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, StyleSheet, Image } from 'react-native';
-import { View, Text, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native-web';
+import { View, Text, Button, StyleSheet, Image } from 'react-native';
 import { FlatGrid } from 'react-native-super-grid';
 
 const Home = ({ navigation, route }) => {
@@ -26,7 +25,7 @@ const Home = ({ navigation, route }) => {
     return (
         <View style={styles.main}>
             <View style={{padding: 20}}>
-                <Text style={styles.quote}>"{quote}"</Text>
+                <Text style={styles.quote}>{isLoadingQuote ? "" : quote}</Text>
                 <Text style={styles.quoteAuthor}>-Random Marvel quote</Text>
             </View>
             <Button
@@ -34,7 +33,7 @@ const Home = ({ navigation, route }) => {
                 title="ENTER"
                 color="#841584"
                 accessibilityLabel="Learn more about this purple button"
-                onPress={() => { navigation.navigate('Movies') }}
+                onPress={() => { console.log(navigation); navigation.navigate('Movies') }}
             />
         </View>
 

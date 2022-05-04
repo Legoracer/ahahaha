@@ -30,14 +30,14 @@ const MovieInformation = ({ navigation, route }) => {
                 <ActivityIndicator />
             </View> :
 
-            <View style={{ flex: 1, flexDirection: 'row', padding: 10 }}>
+            <View style={{ flex: 1, flexDirection: 'column', padding: 10 }}>
                 <View style={styles.thumbContainer}>
-                    <Image source={{ uri: `https://image.tmdb.org/t/p/original/${data.poster_path}` }} style={styles.thumbnail} />
+                    <Image source={{ uri: `https://image.tmdb.org/t/p/original/${data.poster_path || ""}` }} style={styles.thumbnail} />
                 </View>
 
                 <View>
-                    <Text style={{ fontSize: '30px' }}>{data.title}</Text>
-                    <Text style={{ fontSize: '18px', width: 'calc(70%-300px)'}}>{data.overview}</Text>
+                    <Text style={{ fontSize: 30 }}>{data.title}</Text>
+                    <Text style={{ fontSize: 18, width: '100%'}}>{data.overview || ""}</Text>
 
                 </View>
             </View>
@@ -47,10 +47,10 @@ const MovieInformation = ({ navigation, route }) => {
 const styles = StyleSheet.create({
     thumbContainer: {
         width: 250,
-        height: 400
+        height: 250
     },
     thumbnail: {
-        width: '15em',
+        width: '70%',
         aspectRatio: 0.75
     }
 });

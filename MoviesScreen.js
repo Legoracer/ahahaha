@@ -10,21 +10,6 @@ const MoviesScreen = ({ navigation, route }) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
-  const [isLoadingQuote, setLoadingQuote] = useState(true);
-  const [quote, setQuote] = useState([]);
-
-  const getQuote = async () => {
-    try {
-      const response = await fetch("https://randommarvelquoteapi.herokuapp.com/")
-      const json = await response.json();
-      setQuote(json.quote)
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoadingQuote(false);
-    }
-  }
-
   const getMovies = async () => {
     try {
       const response = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=63e7dfa5af9af86b75b62b105ea47f71")
@@ -39,21 +24,15 @@ const MoviesScreen = ({ navigation, route }) => {
 
   useEffect(() => {
     getMovies();
-    getQuote();
   }, []);
 
   return (
-    isLoading || isLoadingQuote ?
+    isLoading  ?
       <View style={{ padding: 20 }}>
         <ActivityIndicator />
       </View> :
 
       <View>
-        <View style={{padding: 20}}>
-          <Text style={styles.quote}>"{quote}"</Text>
-          <Text style={styles.quoteAuthor}>-Random Marvel quote</Text>
-        </View>
-
         <FlatGrid
         style={styles.mainGrid}
         itemDimension={200}

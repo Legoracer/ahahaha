@@ -6,11 +6,18 @@ const Stack = createNativeStackNavigator();
 
 import MovieInformation from "./MovieInformation";
 import MoviesScreen from "./MoviesScreen";
+import Home from './Home';
 
 const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+      <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
+        />
+
         <Stack.Screen
           name="Movies"
           component={MoviesScreen}
